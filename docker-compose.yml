@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  torproxy:
+    image: dperson/torproxy
+    expose:
+      - 8118
+    ports:
+      - '8118:8118'
+
+  scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    depends_on:
+      - 'darknet'
