@@ -4,6 +4,7 @@ services:
   torproxy:
     image: dperson/torproxy
     container_name: torproxy
+    restart: always
     expose:
       - 8118
     ports:
@@ -11,6 +12,7 @@ services:
 
   scraper:
     container_name: scraper
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile

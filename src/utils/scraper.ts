@@ -1,6 +1,12 @@
 import { JSDOM } from 'jsdom';
 import { getSiteData } from './network';
-import { getAuthor, getContent, getDate, getTitle } from './extractors';
+import {
+	getAuthor,
+	getContent,
+	getDate,
+	getTitle,
+	getPostID,
+} from './extractors';
 import { Post } from '../models/post';
 
 export const scraper = async (): Promise<Post[] | undefined> => {
@@ -12,18 +18,20 @@ export const scraper = async (): Promise<Post[] | undefined> => {
 		);
 		const list: Post[] = [];
 		for (const elem of posts) {
+			const PostID = getPostID(elem);
 			const Title = getTitle(elem);
 			const Content = getContent(elem);
 			const Author = getAuthor(elem);
 			const Date = getDate(elem);
 
 			if (
+				PostID !== null &&
 				Title !== null &&
 				Content !== null &&
 				Author !== null &&
 				Date !== null
 			) {
-				const post: Post = { Title, Author, Content, Date };
+				const post: Post = { PostID, Title, Author, Content, Date };
 				list.push(post);
 			}
 		}

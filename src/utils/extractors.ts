@@ -1,5 +1,3 @@
-import { JSDOM } from 'jsdom';
-
 export const getTitle = (element: Element): String => {
 	const title = element
 		.querySelector('div.pre-info.pre-header > div > div.col-sm-5 > h4')
@@ -24,7 +22,7 @@ export const getContent = (element: Element): String | null => {
 
 export const getAuthor = (element: Element): String => {
 	const info = element
-		.querySelector('div.pre-info.pre-footer > div > div:nth-child(1)')
+		.querySelector('div.pre-info.pre-footer > div > div')
 		?.textContent?.trim();
 
 	if (info !== null && info !== undefined) {
@@ -38,13 +36,29 @@ export const getAuthor = (element: Element): String => {
 
 export const getDate = (element: Element): String | null => {
 	const info = element
-		.querySelector('div.pre-info.pre-footer > div > div:nth-child(1)')
+		.querySelector('div.pre-info.pre-footer > div > div')
 		?.textContent?.trim();
 
 	if (info !== null && info !== undefined) {
 		const date = info.match(/at (.*)/);
 		if (date !== null) {
 			return new Date(date[1]).toUTCString();
+		}
+	}
+	return null;
+};
+
+export const getPostID = (element: Element): String | null => {
+	const info = element
+		.querySelector(
+			'div.pre-info.pre-header > div > div.col-sm-7.text-right > a'
+		)
+		?.getAttribute('href');
+
+	if (info !== null && info !== undefined) {
+		const postID = info.match(/(?<=onion\/).*/);
+		if (postID !== null) {
+			return postID[0];
 		}
 	}
 	return null;

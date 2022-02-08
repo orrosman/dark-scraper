@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
 
 export interface Post {
+	PostID: String;
 	Author: String;
 	Title: String;
 	Content: String;
@@ -8,6 +9,10 @@ export interface Post {
 }
 
 const PostSchema = new Schema({
+	PostID: {
+		type: String,
+		required: true,
+	},
 	Author: {
 		type: String,
 		required: true,
