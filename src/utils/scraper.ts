@@ -1,18 +1,9 @@
-// run docker with:
-// docker run -it --name dark-scraper -p 8118:8118 -p 9050:9050 -d dperson/torproxy
-
 import { JSDOM } from 'jsdom';
 import { getSiteData } from './network';
 import { getAuthor, getContent, getDate, getTitle } from './extractors';
+import { Post } from '../models/post';
 
-interface Post {
-	Author: String;
-	Title: String;
-	Content: String;
-	Date: String;
-}
-
-export const scraper = async () => {
+export const scraper = async (): Promise<Post[] | undefined> => {
 	const siteData = await getSiteData();
 	try {
 		const html = new JSDOM(siteData);
@@ -36,10 +27,8 @@ export const scraper = async () => {
 				list.push(post);
 			}
 		}
-		console.log(list);
 		return list;
 	} catch (err) {
 		console.log(err);
 	}
 };
-scraper();

@@ -3,12 +3,14 @@ version: '3'
 services:
   torproxy:
     image: dperson/torproxy
+    container_name: torproxy
     expose:
       - 8118
     ports:
       - '8118:8118'
 
   scraper:
+    container_name: scraper
     build:
       context: .
       dockerfile: Dockerfile
@@ -16,3 +18,19 @@ services:
       - '8080:8080'
     depends_on:
       - 'darknet'
+    links:
+      - 'mongo'
+
+  mongo:
+    image: mongo
+    container_name: database
+    restart: always
+    ports:
+      - '27017:27017'
+
+  mongo-express:
+    image: mongo-express
+    container_name: database-client
+    restart: always
+    ports:
+      - 8081:8081
