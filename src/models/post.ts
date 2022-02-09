@@ -1,11 +1,11 @@
 import { Schema, model } from 'mongoose';
 
 export interface Post {
-	PostID: String;
-	Author: String;
-	Title: String;
-	Content: String;
-	Date: String;
+	PostID: string;
+	Author: string;
+	Title: string;
+	Content: string;
+	Date: string;
 }
 
 const PostSchema = new Schema({
