@@ -1,11 +1,13 @@
 import { Schema, model } from 'mongoose';
+import { Sentiment } from '../utils/analysis';
 
 export interface Post {
-	PostID: String;
-	Author: String;
-	Title: String;
-	Content: String;
-	Date: String;
+	PostID: string;
+	Author: string;
+	Title: string;
+	Content: string;
+	Date: string;
+	Sentiment: Sentiment;
 }
 
 const PostSchema = new Schema({
@@ -26,6 +28,10 @@ const PostSchema = new Schema({
 		required: true,
 	},
 	Date: {
+		type: String,
+		required: true,
+	},
+	Sentiment: {
 		type: String,
 		required: true,
 	},

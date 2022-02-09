@@ -1,4 +1,4 @@
-export const getTitle = (element: Element): String => {
+export const getTitle = (element: Element): string => {
 	const title = element
 		.querySelector('div.pre-info.pre-header > div > div.col-sm-5 > h4')
 		?.textContent?.trim();
@@ -9,7 +9,7 @@ export const getTitle = (element: Element): String => {
 	}
 };
 
-export const getContent = (element: Element): String | null => {
+export const getContent = (element: Element): string | null => {
 	const content = element
 		.querySelector('div.well.well-sm.well-white.pre > div > ol')
 		?.textContent?.trim();
@@ -20,7 +20,7 @@ export const getContent = (element: Element): String | null => {
 	}
 };
 
-export const getAuthor = (element: Element): String => {
+export const getAuthor = (element: Element): string => {
 	const info = element
 		.querySelector('div.pre-info.pre-footer > div > div')
 		?.textContent?.trim();
@@ -34,7 +34,7 @@ export const getAuthor = (element: Element): String => {
 	return '';
 };
 
-export const getDate = (element: Element): String | null => {
+export const getDate = (element: Element): string | null => {
 	const info = element
 		.querySelector('div.pre-info.pre-footer > div > div')
 		?.textContent?.trim();
@@ -48,7 +48,7 @@ export const getDate = (element: Element): String | null => {
 	return null;
 };
 
-export const getPostID = (element: Element): String | null => {
+export const getPostID = (element: Element): string | null => {
 	const info = element
 		.querySelector(
 			'div.pre-info.pre-header > div > div.col-sm-7.text-right > a'

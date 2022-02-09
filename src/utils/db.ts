@@ -9,7 +9,7 @@ mongoose
 export const addToDB = async (posts: Post[]): Promise<void> => {
 	for (const post of posts) {
 		const inDB = await isInDB(post);
-        
+
 		if (inDB === false) {
 			new PostModel({ ...post }).save((err: any, _data: any) => {
 				if (err) {
