@@ -8,6 +8,7 @@ import {
 	getPostID,
 } from './extractors';
 import { Post } from '../models/post';
+import { getSentiment } from './analysis';
 
 export const scraper = async (): Promise<Post[] | undefined> => {
 	const siteData = await getSiteData();
@@ -31,7 +32,8 @@ export const scraper = async (): Promise<Post[] | undefined> => {
 				Author !== null &&
 				Date !== null
 			) {
-				const post: Post = { PostID, Title, Author, Content, Date };
+				const Sentiment = getSentiment(Content);
+				const post: Post = { PostID, Title, Author, Content, Date, Sentiment };
 				list.push(post);
 			}
 		}
