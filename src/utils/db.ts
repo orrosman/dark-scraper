@@ -21,6 +21,10 @@ export const addToDB = async (posts: Post[]): Promise<void> => {
 	}
 };
 
+export const getPosts = async (): Promise<Post[]> => {
+	return await PostModel.find({}, { _id: 0 }).select('-__v');
+};
+
 const isInDB = async (post: Post): Promise<Boolean> => {
 	const res = await PostModel.findOne({ PostID: post.PostID }).exec();
 	return res === null ? false : true;
