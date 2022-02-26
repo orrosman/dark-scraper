@@ -14,7 +14,6 @@ const PostBoard = ({ posts }) => {
 			gap: '2rem',
 		}}
 		>
-				{/* <Link to="/">Table view</Link> */}
 				{posts.map((post, i) => (
 					<Post key={i} post={post} />
 				))}

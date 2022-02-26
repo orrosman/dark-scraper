@@ -11,7 +11,7 @@ const PostsTable = ({ posts }) => {
 			Object.keys(posts[0]).map((key) => {
 				return { Header: key, accessor: key };
 			}),
-		[]
+		[posts]
 	);
 
 	const {

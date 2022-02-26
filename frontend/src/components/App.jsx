@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import PostsTable from './Table/PostsTable';
 import PostsBoard from './Board/PostBoard';

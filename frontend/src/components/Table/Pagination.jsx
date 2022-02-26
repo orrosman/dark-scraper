@@ -8,7 +8,6 @@ const Pagination = (props) => {
 		pageCount,
 		gotoPage,
 		nextPage,
-		previousPage,
 		setPageSize,
 		pageIndex,
 		pageSize,
