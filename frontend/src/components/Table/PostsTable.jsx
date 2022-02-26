@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
 import { Container, Table, ButtonGroup, Button } from 'react-bootstrap';
-import { useTable, usePagination } from 'react-table';
+import { useTable, usePagination, useGlobalFilter } from 'react-table';
+import Pagination from './Pagination';
 
 const PostsTable = ({ posts }) => {
-	const data = posts; //.map((post) => Object.values(post));
+	const data = posts; 
 	const columns = useMemo(
 		() =>
 			Object.keys(posts[0]).map((key) => {
@@ -39,7 +40,7 @@ const PostsTable = ({ posts }) => {
 	return (
 		<Container>
 			<h3>Posts</h3>
-			<Table striped bordered hover {...getTableProps()} className='mt-1'>
+			<Table striped bordered hover {...getTableProps()} className="mt-1">
 				<thead>
 					{headerGroups.map((headerGroup) => (
 						<tr {...headerGroup.getHeaderGroupProps()}>
@@ -64,52 +65,18 @@ const PostsTable = ({ posts }) => {
 					})}
 				</tbody>
 			</Table>
-			<ButtonGroup>
-				<Button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-					First Page
-				</Button>
-				<Button onClick={() => previousPage()} disabled={!canPreviousPage}>
-					{'<'}
-				</Button>
-				<Button onClick={() => nextPage()} disabled={!canNextPage}>
-					{'>'}
-				</Button>
-				<Button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-					Last Page
-				</Button>
-			</ButtonGroup>{' '}
-			<span>
-				Page{' '}
-				<strong>
-					{pageIndex + 1} of {pageOptions.length}
-				</strong>{' '}
-			</span>
-			<span>
-				| Go to page:{' '}
-				<input
-					type="number"
-					defaultValue={pageIndex + 1}
-					max={pageCount}
-					min={1}
-					onChange={(e) => {
-						const page = e.target.value ? Number(e.target.value) - 1 : 0;
-						gotoPage(page);
-					}}
-					style={{ width: '100px' }}
-				/>
-			</span>{' '}
-			<select
-				value={pageSize}
-				onChange={(e) => {
-					setPageSize(Number(e.target.value));
-				}}
-			>
-				{[5, 10, 20, 30, 40, 50].map((pageSize) => (
-					<option key={pageSize} value={pageSize}>
-						Show {pageSize}
-					</option>
-				))}
-			</select>
+			<Pagination
+				canPreviousPage={canPreviousPage}
+				canNextPage={canNextPage}
+				pageOptions={pageOptions}
+				pageCount={pageCount}
+				gotoPage={gotoPage}
+				nextPage={nextPage}
+				previousPage={previousPage}
+				setPageSize={setPageSize}
+				pageIndex={pageIndex}
+				pageSize={pageSize}
+			/>
 		</Container>
 	);
 };

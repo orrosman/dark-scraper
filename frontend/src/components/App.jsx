@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useRef, useCallback, useEffect } from 'react';
-import PostsTable from './PostsTable';
+import PostsTable from './Table/PostsTable';
 
 const App = () => {
 	const [posts, setPosts] = useState([
