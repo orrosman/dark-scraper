@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Container, Table, ButtonGroup, Button } from 'react-bootstrap';
+import { Container, Table } from 'react-bootstrap';
 import { useTable, usePagination, useGlobalFilter } from 'react-table';
 import Pagination from './Pagination';
 import GlobalSearch from './GlobalSearch';
