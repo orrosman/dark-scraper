@@ -2,9 +2,10 @@ import React, { useMemo } from 'react';
 import { Container, Table, ButtonGroup, Button } from 'react-bootstrap';
 import { useTable, usePagination, useGlobalFilter } from 'react-table';
 import Pagination from './Pagination';
+import GlobalSearch from './GlobalSearch';
 
 const PostsTable = ({ posts }) => {
-	const data = posts; 
+	const data = posts;
 	const columns = useMemo(
 		() =>
 			Object.keys(posts[0]).map((key) => {
@@ -27,19 +28,22 @@ const PostsTable = ({ posts }) => {
 		nextPage,
 		previousPage,
 		setPageSize,
-		state: { pageIndex, pageSize },
+		state: { pageIndex, pageSize, globalFilter },
+		setGlobalFilter,
 	} = useTable(
 		{
 			columns,
 			data,
 			initialState: {},
 		},
+		useGlobalFilter,
 		usePagination
 	);
 
 	return (
 		<Container>
 			<h3>Posts</h3>
+			<GlobalSearch filter={globalFilter} setFilter={setGlobalFilter} />
 			<Table striped bordered hover {...getTableProps()} className="mt-1">
 				<thead>
 					{headerGroups.map((headerGroup) => (
