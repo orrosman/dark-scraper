@@ -1,6 +1,10 @@
 import React from 'react';
 import { useState, useRef, useCallback, useEffect } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+
 import PostsTable from './Table/PostsTable';
+import PostsBoard from './Board/PostBoard';
+import Sidebar from './Sidebar';
 
 const App = () => {
 	const [posts, setPosts] = useState([
@@ -36,7 +40,12 @@ const App = () => {
 
 	return (
 		<div className="d-flex text-center">
-			<PostsTable posts={posts} />
+			<Sidebar />
+			<Routes>
+				<Route path="/" element={<PostsTable posts={posts} />} />
+				<Route path="/board" element={<PostsBoard posts={posts} />} />
+			</Routes>
+			{/* <PostsTable posts={posts} /> */}
 		</div>
 	);
 };
