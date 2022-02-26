@@ -6,13 +6,11 @@ const Footer = () => {
 	return (
 		<footer
 			className="
-			position-absolute
-			bottom-0
-			start-50
-			translate-middle-x
+			sticky-bottom
 			bg-dark
 			text-center text-white
 			w-100
+			mt-4
 		"
 		>
 			<div className="container p-2 pb-0">
