@@ -12,6 +12,7 @@ const Pagination = (props) => {
 		pageIndex,
 		pageSize,
 	} = props;
+
 	return (
 		<>
 			<ButtonGroup>

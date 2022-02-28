@@ -10,6 +10,7 @@ const App = () => {
 	const [posts, setPosts] = useState([
 		{ Author: 'me', Title: 'title', Content: 'bla bla bla', Date: 'now' },
 	]);
+
 	const evtSrc = useRef(null);
 
 	const listenEvt = useCallback(() => {
@@ -45,8 +46,8 @@ const App = () => {
 				<Route path="/" element={<PostsTable posts={posts} />} />
 				<Route path="/board" element={<PostsBoard posts={posts} />} />
 			</Routes>
-			{/* <PostsTable posts={posts} /> */}
 		</div>
 	);
 };
+
 export default App;
