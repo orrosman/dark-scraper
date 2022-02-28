@@ -7,7 +7,8 @@ import Post from './Post';
 const PostBoard = ({ posts }) => {
 	return (
 		<Container>
-			<Link to="/" className="float-end">
+			<h3>Posts</h3>
+			<Link to="/" className="float-end mb-2">
 				Table view
 			</Link>
 
