@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Container, Table } from 'react-bootstrap';
+import {Link} from 'react-router-dom'
 import { useTable, usePagination, useGlobalFilter } from 'react-table';
 import Pagination from './Pagination';
 import GlobalSearch from './GlobalSearch';
@@ -43,6 +44,9 @@ const PostsTable = ({ posts }) => {
 	return (
 		<Container>
 			<h3>Posts</h3>
+			<Link to="/board" className="float-end">
+				Board view
+			</Link>
 			<GlobalSearch filter={globalFilter} setFilter={setGlobalFilter} />
 			<Table striped bordered hover {...getTableProps()} className="mt-1">
 				<thead>
